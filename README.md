@@ -1,7 +1,7 @@
 pytgraph
 ===============================
 
-A 3D graph visualization jupyter widget
+A 3D graph visualization jupyter widget using [tgraph](https://github.com/intv0id/tgraph)
 
 Installation
 ------------
