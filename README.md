@@ -14,7 +14,7 @@ To install use pip:
 
 For a development installation (requires npm),
 
-    $ git clone https://github.com//pytgraph.git
+    $ git clone https://github.com/pytgraph.git
     $ cd pytgraph
     $ pip install -e .
     $ jupyter nbextension install --py --symlink --sys-prefix pytgraph
