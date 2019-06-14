@@ -1,24 +1,29 @@
-pytgraph
-===============================
 
-A 3D graph visualization jupyter widget using [tgraph](https://github.com/intv0id/tgraph)
+# pytgraph
 
-Installation
-------------
+[![Build Status](https://travis-ci.org//pytgraph.svg?branch=master)](https://travis-ci.org//pytgraph)
+[![codecov](https://codecov.io/gh//pytgraph/branch/master/graph/badge.svg)](https://codecov.io/gh//pytgraph)
 
-To install use pip:
 
-``` bash
+A Jupyter Widget allowing to plot graphs in 3D
+
+## Installation
+
+You can install using `pip`:
+
+```bash
 pip install pytgraph
-jupyter nbextension enable --py --sys-prefix pytgraph
 ```
 
-For a development installation (requires npm),
+Or if you use jupyterlab:
 
-``` bash
-git clone https://github.com/pytgraph.git
-cd pytgraph
-pip install -e .
-jupyter nbextension install --py --symlink --sys-prefix pytgraph
-jupyter nbextension enable --py --sys-prefix pytgraph
+```bash
+pip install pytgraph
+jupyter labextension install @jupyter-widgets/jupyterlab-manager
+```
+
+If you are using Jupyter Notebook 5.2 or earlier, you may also need to enable
+the nbextension:
+```bash
+jupyter nbextension enable --py [--sys-prefix|--user|--system] pytgraph
 ```
