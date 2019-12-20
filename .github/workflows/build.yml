@@ -1,0 +1,45 @@
+name: Build
+
+on: [push]
+
+jobs:
+  build-python:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        python-version: [3.6, 3.7, 3.8]
+
+    steps:
+      - uses: actions/checkout@v1
+      - name: Use Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v1
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install dependancies
+        run: |
+          pip install pipenv
+          pipenv install --dev
+      - name: mypy check
+        run: |
+          pipenv run python -m mypy pytgraph
+      - name: pip bundling
+        run: |
+          pipenv run python setup.py sdist
+
+  build-typescript:
+      runs-on: ubuntu-latest
+
+      strategy:
+        matrix:
+          node-version: [12.x]
+
+      steps:
+        - uses: actions/checkout@v1
+        - uses: actions/setup-node@v1
+          with:
+            node-version: 12
+        - name: Build typescript
+          run: |
+            npm install -D
+            npm run build --if-present
