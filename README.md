@@ -31,6 +31,32 @@ the nbextension:
 jupyter nbextension enable --py [--sys-prefix|--user|--system] pytgraph
 ```
 
+## Development
+
+### Python module
+
+#### Setup Environment
+
+```bash
+pip install pipenv
+pipenv install --dev
+pipenv shell
+jupyter nbextension install --symlink pytgraph
+jupyter nbextension enable --py pytgraph
+```
+
+### Typescript frontend
+
+```bash
+npm install -D
+npm run build
+```
+
+## Contribution
+
+Any contribution is welcome. Feel free to open a ticket as well.
+
+
 [pypi-url]: https://pypi.org/project/pytgraph/
 [pypi-image]: https://img.shields.io/pypi/wheel/pytgraph
 [build-action-url]: https://github.com/intv0id/pytgraph/actions?query=workflow%3A%22Build%22
