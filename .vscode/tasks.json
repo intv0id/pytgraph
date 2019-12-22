@@ -4,15 +4,38 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "Build Python distribution",
+            "label": "Install dependancies",
             "type": "shell",
             "group": "build",
             "command": "${config:python.pythonPath}",
             "args": [
+                "-m",
+                "pipenv",
+                "install",
+                "-D",
+            ]
+        },
+        {
+            "label": "Build Python wheel",
+            "type": "shell",
+            "group": "build",
+            "command": "${config:python.pythonPath}",
+            "args": [
+                "-m",
+                "pipenv",
+                "run",
                 "setup.py",
                 "sdist"
             ],
-            "problemMatcher": []
-        }
+        },
+        {
+            "label": "Build typescript",
+            "type": "npm",
+            "script": "build",
+            "group": "build",
+            "problemMatcher": ["$tsc-watch"],
+        },
+
+
     ]
 }

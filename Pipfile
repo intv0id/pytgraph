@@ -6,6 +6,11 @@ verify_ssl = true
 [dev-packages]
 mypy = "*"
 wheel = "*"
+pylint = "*"
+
+[dev-packages.pytgraph]
+editable = true
+path = "."
 
 [packages]
 dataclasses = "*"
@@ -13,4 +18,3 @@ jupyter = "*"
 jupyterlab = "*"
 traitlets = "*"
 ipywidgets = "*"
-pytgraph = {editable = true,path = "."}
