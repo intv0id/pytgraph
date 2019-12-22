@@ -7,10 +7,12 @@ verify_ssl = true
 mypy = "*"
 wheel = "*"
 pylint = "*"
-
-[dev-packages.pytgraph]
-editable = true
-path = "."
+sphinx = "*"
+jupyter-sphinx = "*"
+nbsphinx = "*"
+sphinx-rtd-theme = "*"
+pytgraph = {editable = true,path = "."}
+nbsphinx-link = "*"
 
 [packages]
 dataclasses = "*"

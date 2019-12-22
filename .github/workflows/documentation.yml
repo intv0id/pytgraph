@@ -6,13 +6,29 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        python-version: [3.8]
-
     steps:
       - uses: actions/checkout@v1
-      - name: Use Python ${{ matrix.python-version }}
+      - name: Use Python 3.8
         uses: actions/setup-python@v1
         with:
-          python-version: ${{ matrix.python-version }}
+          python-version: 3.8
+      - name: Install dependancies
+        run: |
+          apt install pandoc
+          pip install pipenv
+          pipenv install --dev
+      - name: Build documentation
+        run: |
+          cd docs
+          python -m pipenv run sphinx-build -M html source build
+          cd ..
+          mv docs/build/html public
+          touch public/.nojekyll
+      - name: deploy documentation
+        uses: JamesIves/github-pages-deploy-action@releases/v3
+        if: github.ref == 'refs/heads/master'
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BASE_BRANCH: master
+          BRANCH: gh-pages
+          FOLDER: public
