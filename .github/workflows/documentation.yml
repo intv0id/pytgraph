@@ -14,7 +14,8 @@ jobs:
           python-version: 3.8
       - name: Install dependancies
         run: |
-          apt install pandoc
+          sudo apt update
+          sudo apt install -y pandoc
           pip install pipenv
           pipenv install --dev
       - name: Build documentation
